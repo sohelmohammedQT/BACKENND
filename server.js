@@ -7,7 +7,7 @@ const app = express();
 
 // Configure CORS with specific options
 app.use(cors({
-    origin: '*', // For development, allowing all origins
+    origin: ['https://frontend-production-7549.up.railway.app'], // Add your frontend URLs
     methods: ['GET', 'POST'],
     credentials: true
 }));
@@ -143,7 +143,7 @@ app.post('/api/logout', (req, res) => {
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: ['http://localhost:5500', 'http://127.0.0.1:5500'], // Add your frontend URLs
+        origin: ['https://frontend-production-7549.up.railway.app'], // Add your frontend URLs
         methods: ['GET', 'POST'],
         credentials: true
     }
@@ -310,7 +310,6 @@ io.on('connection', (socket) => {
         }
     });
 });
-
 
 server.listen(5000, () => {
     console.log('Server is running on port 5000');
